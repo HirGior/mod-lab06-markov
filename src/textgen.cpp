@@ -89,6 +89,7 @@ TextGenerator::getStatetab() const {
 }
 
 std::string TextGenerator::generateString(int maxWords) {
+    
     Prefix prefix = firstPrefix;
 
     std::string result;
@@ -113,6 +114,5 @@ std::string TextGenerator::generateString(int maxWords) {
         prefix.pop_front();
         prefix.push_back(next);
     }
-
     return result;
 }

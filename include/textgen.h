@@ -11,6 +11,7 @@ typedef std::deque<std::string> Prefix;
 
 class TextGenerator {
 private:
+
     int prefixSize;
 
     Prefix firstPrefix;
@@ -18,6 +19,7 @@ private:
     std::map<Prefix, std::vector<std::string>> stateTable;
 
 public:
+
     TextGenerator(int prefSize);
 
     void BuildTable(const std::string& filename);
