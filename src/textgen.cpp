@@ -1,3 +1,5 @@
+// Copyright 2026
+
 #include "../include/textgen.h"
 
 #include <fstream>
@@ -25,14 +27,12 @@ void TextGenerator::BuildTable(const std::string& filename) {
     for (int i = 0; i < prefixSize; i++)
         prefix.push_back("");
 
-    while (file >> word)
-    {
+    while (file >> word) {
         stateTable[prefix].push_back(word);
 
         prefix.pop_front();
         prefix.push_back(word);
     }
-
     stateTable[prefix].push_back("");
 }
 
@@ -64,11 +64,11 @@ std::string TextGenerator::GenerateText(int maxWords) {
         prefix.pop_front();
         prefix.push_back(nextWord);
     }
-
     return result;
 }
 
-const std::map<Prefix, std::vector<std::string>>& TextGenerator::GetTable() const {
+const std::map<Prefix, std::vector<std::string>>&
+TextGenerator::GetTable() const {
     return stateTable;
 }
 
@@ -89,7 +89,6 @@ TextGenerator::getStatetab() const {
 }
 
 std::string TextGenerator::generateString(int maxWords) {
-    
     Prefix prefix = firstPrefix;
 
     std::string result;

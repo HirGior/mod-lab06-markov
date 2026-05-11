@@ -10,31 +10,29 @@
 typedef std::deque<std::string> Prefix;
 
 class TextGenerator {
-private:
+    private:
+        int prefixSize;
 
-    int prefixSize;
+        Prefix firstPrefix;
 
-    Prefix firstPrefix;
+        std::map<Prefix, std::vector<std::string>> stateTable;
 
-    std::map<Prefix, std::vector<std::string>> stateTable;
+    public:
+        explicit TextGenerator(int prefSize);
 
-public:
+        void BuildTable(const std::string& filename);
 
-    TextGenerator(int prefSize);
+        std::string GenerateText(int maxWords);
 
-    void BuildTable(const std::string& filename);
+        const std::map<Prefix, std::vector<std::string>>& GetTable() const;
 
-    std::string GenerateText(int maxWords);
+        void setTable(
+            const std::map<Prefix, std::vector<std::string>>& table,
+            const Prefix& first);
 
-    const std::map<Prefix, std::vector<std::string>>& GetTable() const;
+        const Prefix& getFirstPrefix() const;
 
-    void setTable(
-        const std::map<Prefix, std::vector<std::string>>& table,
-        const Prefix& first);
+        const std::map<Prefix, std::vector<std::string>>& getStatetab() const;
 
-    const Prefix& getFirstPrefix() const;
-
-    const std::map<Prefix, std::vector<std::string>>& getStatetab() const;
-
-    std::string generateString(int maxWords);
+        std::string generateString(int maxWords);
 };
