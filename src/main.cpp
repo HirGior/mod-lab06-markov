@@ -6,8 +6,7 @@
 
 #include "../include/textgen.h"
 
-int main()
-{
+int main() {
     TextGenerator generator(2);
 
     generator.BuildTable("../src/input.txt");

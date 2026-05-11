@@ -1,3 +1,5 @@
+// Copyright 2026
+
 #pragma once
 
 #include <string>
@@ -7,8 +9,7 @@
 
 typedef std::deque<std::string> Prefix;
 
-class TextGenerator
-{
+class TextGenerator {
 private:
     int prefixSize;
 

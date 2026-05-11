@@ -8,14 +8,12 @@
 #include <string>
 #include <vector>
 
-TextGenerator::TextGenerator(int prefSize)
-{
+TextGenerator::TextGenerator(int prefSize) {
     prefixSize = prefSize;
     srand(time(nullptr));
 }
 
-void TextGenerator::BuildTable(const std::string& filename)
-{
+void TextGenerator::BuildTable(const std::string& filename) {
     std::ifstream file(filename);
 
     if (!file.is_open())
@@ -38,8 +36,7 @@ void TextGenerator::BuildTable(const std::string& filename)
     stateTable[prefix].push_back("");
 }
 
-std::string TextGenerator::GenerateText(int maxWords)
-{
+std::string TextGenerator::GenerateText(int maxWords) {
     Prefix prefix;
 
     for (int i = 0; i < prefixSize; i++)
@@ -47,8 +44,7 @@ std::string TextGenerator::GenerateText(int maxWords)
 
     std::string result;
 
-    for (int i = 0; i < maxWords; i++)
-    {
+    for (int i = 0; i < maxWords; i++) {
         auto it = stateTable.find(prefix);
 
         if (it == stateTable.end())
@@ -72,32 +68,27 @@ std::string TextGenerator::GenerateText(int maxWords)
     return result;
 }
 
-const std::map<Prefix, std::vector<std::string>>& TextGenerator::GetTable() const
-{
+const std::map<Prefix, std::vector<std::string>>& TextGenerator::GetTable() const {
     return stateTable;
 }
 
 void TextGenerator::setTable(
     const std::map<Prefix, std::vector<std::string>>& table,
-    const Prefix& first)
-{
+    const Prefix& first) {
     stateTable = table;
     firstPrefix = first;
 }
 
-const Prefix& TextGenerator::getFirstPrefix() const
-{
+const Prefix& TextGenerator::getFirstPrefix() const {
     return firstPrefix;
 }
 
 const std::map<Prefix, std::vector<std::string>>&
-TextGenerator::getStatetab() const
-{
+TextGenerator::getStatetab() const {
     return stateTable;
 }
 
-std::string TextGenerator::generateString(int maxWords)
-{
+std::string TextGenerator::generateString(int maxWords) {
     Prefix prefix = firstPrefix;
 
     std::string result;
@@ -105,8 +96,7 @@ std::string TextGenerator::generateString(int maxWords)
     for (const auto& word : prefix)
         result += word + " ";
 
-    for (int i = prefixSize; i < maxWords; i++)
-    {
+    for (int i = prefixSize; i < maxWords; i++) {
         auto it = stateTable.find(prefix);
 
         if (it == stateTable.end())

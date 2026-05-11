@@ -12,8 +12,7 @@
 using Prefix = std::deque<std::string>;
 using Statetab = std::map<Prefix, std::vector<std::string>>;
 
-TEST(SimpleTest, Works)
-{
+TEST(SimpleTest, Works) {
     EXPECT_EQ(1, 1);
 }
 
