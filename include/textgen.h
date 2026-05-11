@@ -1,33 +1,37 @@
-// Copyright 2026
-
 #pragma once
 
+#include <string>
 #include <deque>
 #include <map>
-#include <string>
 #include <vector>
 
-using Prefix = std::deque<std::string>;
-using Statetab = std::map<Prefix, std::vector<std::string>>;
+typedef std::deque<std::string> Prefix;
 
-class TextGenerator {
- private:
-  int npref;
-  Statetab statetab;
-  Prefix first_prefix;
+class TextGenerator
+{
+private:
+    int prefixSize;
 
- public:
-  explicit TextGenerator(int prefix_size);
+    Prefix firstPrefix;
 
-  void build(std::istream& in);
+    std::map<Prefix, std::vector<std::string>> stateTable;
 
-  std::string generate(int max_words);
+public:
+    TextGenerator(int prefSize);
 
-  void setTable(const Statetab& table, const Prefix& first);
+    void BuildTable(const std::string& filename);
 
-  const Prefix& getFirstPrefix() const;
+    std::string GenerateText(int maxWords);
 
-  const Statetab& getStatetab() const;
+    const std::map<Prefix, std::vector<std::string>>& GetTable() const;
 
-  std::string generateString(int max_words);
+    void setTable(
+        const std::map<Prefix, std::vector<std::string>>& table,
+        const Prefix& first);
+
+    const Prefix& getFirstPrefix() const;
+
+    const std::map<Prefix, std::vector<std::string>>& getStatetab() const;
+
+    std::string generateString(int maxWords);
 };
