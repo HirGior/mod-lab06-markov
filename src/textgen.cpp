@@ -12,7 +12,7 @@
 
 TextGenerator::TextGenerator(int prefSize) {
     prefixSize = prefSize;
-    srand(time(nullptr));
+    seed = time(nullptr);
 }
 
 void TextGenerator::BuildTable(const std::string& filename) {
@@ -104,7 +104,7 @@ std::string TextGenerator::generateString(int maxWords) {
 
         const auto& suffixes = it->second;
 
-        int index = rand() % suffixes.size();
+        int index = rand_r(&seed) % suffixes.size();
 
         std::string next = suffixes[index];
 
