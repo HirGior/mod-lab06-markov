@@ -1,5 +1,8 @@
-#include <iostream>
+// Copyright 2026
+
 #include <fstream>
+#include <iostream>
+#include <string>
 
 #include "../include/textgen.h"
 

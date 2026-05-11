@@ -4,6 +4,9 @@
 #include <sstream>
 #include <cstdlib>
 #include <ctime>
+#include <map>
+#include <string>
+#include <vector>
 
 TextGenerator::TextGenerator(int prefSize)
 {
