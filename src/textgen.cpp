@@ -52,7 +52,7 @@ std::string TextGenerator::GenerateText(int maxWords) {
 
         const std::vector<std::string>& suffixes = it->second;
 
-        int index = rand() % suffixes.size();
+        int index = rand_r(&seed) % suffixes.size();
 
         std::string nextWord = suffixes[index];
 
